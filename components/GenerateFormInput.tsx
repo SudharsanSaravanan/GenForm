@@ -57,6 +57,7 @@ const GenerateFormInput: React.FC<Props> = ({ text, totalForms, isSubscribed }) 
         type="text"
         placeholder="Write a prompt to generate form..."
         required
+        className="border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white focus:border-blue-500 dark:focus:border-blue-400"
       />
       {
         isSubscribed && totalForms! <= MAX_FREE_FORM ? <SubmitButton /> : <Button disabled className="h-12"> <Lock/> Upgrade Plan</Button>
