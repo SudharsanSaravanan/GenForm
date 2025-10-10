@@ -31,8 +31,5 @@ export const getForms = async () => {
         console.log("Error fetching forms:", error.message);
         // Return a failure response
         return { success: false, message: "Error fetching forms" };
-    } finally {
-        // Ensure Prisma client is disconnected after the query
-        await prisma.$disconnect();
     }
 };
