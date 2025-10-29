@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { ArrowRight, CheckCircle, Sparkles, Zap, Shield, Users, BarChart3, Clock, Star } from "lucide-react";
 import Link from "next/link";
 import PricingPage from "./PricingPage";
+import Footer from "./Footer";
 
 interface LandingPageProps {
   userId?: string | null;
@@ -286,13 +287,15 @@ const LandingPage = ({ userId }: LandingPageProps) => {
         </div>
 
         {/* Footer */}
-        <div className="relative z-10 border-t border-gray-200 dark:border-gray-800 py-8">
+
+        <Footer />
+        {/* <div className="relative z-10 border-t border-gray-200 dark:border-gray-800 py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-center text-gray-600 dark:text-gray-400">
               © 2025 GenForm. All rights reserved.
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
