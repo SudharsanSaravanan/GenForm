@@ -10,7 +10,7 @@ const Logo = () => {
                 width={50} 
                 height={50} 
             />
-            <h1 className="font-extrabold text-2xl ml-4">GenForm.ai</h1>
+            <h1 className="font-extrabold text-2xl ml-4 hidden sm:block">GenForm.ai</h1>
         </div>
     );
 };
