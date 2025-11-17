@@ -114,11 +114,28 @@ Requirements:
       message: "Form generated successfully.",
       data: form,
     };
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error generating form:", error);
+    
+    // Handle rate limit error specifically
+    if (error?.status === 429 || error?.statusText === 'Too Many Requests') {
+      return {
+        success: false,
+        message: "Too many requests. Please wait a moment and try again. The free tier has rate limits.",
+      };
+    }
+    
+    // Handle other API errors
+    if (error?.status) {
+      return {
+        success: false,
+        message: `API Error: ${error.statusText || 'Failed to generate form'}. Please try again.`,
+      };
+    }
+    
     return {
       success: false,
-      message: "An error occurred while generating the form",
+      message: "An error occurred while generating the form. Please try again.",
     };
   }
 };
