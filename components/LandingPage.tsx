@@ -11,6 +11,9 @@ interface LandingPageProps {
 }
 
 const LandingPage = ({ userId }: LandingPageProps) => {
+  // Track which FAQ item is open. Using React state lets us control
+  // animations and click targets precisely (we replaced native
+  // <details>/<summary> so the whole header is clickable).
   const [openFaq, setOpenFaq] = useState<"forms" | "customize" | "submissions" | null>(null);
 
   return (
@@ -404,7 +407,10 @@ const LandingPage = ({ userId }: LandingPageProps) => {
             </h2>
           </div>
           <div className="space-y-4">
-            {/* FAQ 1 */}
+            {/* FAQ 1
+              Replaced native <details> with a state-driven panel so the
+              whole header (question row) is clickable and animations are
+              consistent across browsers. */}
             <div
               className={`group rounded-2xl border border-gray-200/70 dark:border-gray-700/50 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm cursor-pointer transition-all duration-500 ease-[cubic-bezier(.2,.8,.2,1)] hover:bg-white/80 dark:hover:bg-gray-900/30 hover:shadow-md hover:shadow-gray-300/40 dark:hover:shadow-none focus-within:ring-2 focus-within:ring-green-500/20 focus-within:border-green-200 ${
                 openFaq === "forms" ? "shadow-xl shadow-gray-300/40 border-green-200" : ""
@@ -439,6 +445,8 @@ const LandingPage = ({ userId }: LandingPageProps) => {
                 </span>
               </button>
               <div className="px-4 pb-4 sm:px-6 sm:pb-6">
+                {/* Content expansion uses a grid-rows transition to mimic
+                    auto-height; text also fades/slides for a smooth feel */}
                 <div
                   className={`grid transition-[grid-template-rows] duration-700 ease-[cubic-bezier(.16,.84,.44,1)] ${
                     openFaq === "forms" ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
@@ -496,6 +504,8 @@ const LandingPage = ({ userId }: LandingPageProps) => {
                 </span>
               </button>
               <div className="px-4 pb-4 sm:px-6 sm:pb-6">
+                {/* Content expansion uses a grid-rows transition to mimic
+                    auto-height; text also fades/slides for a smooth feel */}
                 <div
                   className={`grid transition-[grid-template-rows] duration-700 ease-[cubic-bezier(.16,.84,.44,1)] ${
                     openFaq === "customize" ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
@@ -555,11 +565,11 @@ const LandingPage = ({ userId }: LandingPageProps) => {
                 </span>
               </button>
               <div className="px-4 pb-4 sm:px-6 sm:pb-6">
+                {/* Content expansion uses a grid-rows transition to mimic
+                    auto-height; text also fades/slides for a smooth feel */}
                 <div
                   className={`grid transition-[grid-template-rows] duration-700 ease-[cubic-bezier(.16,.84,.44,1)] ${
-                    openFaq === "submissions"
-                      ? "grid-rows-[1fr]"
-                      : "grid-rows-[0fr]"
+                    openFaq === "submissions" ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                   }`}
                 >
                   <div className="overflow-hidden">
