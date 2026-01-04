@@ -8,7 +8,7 @@ import Footer from "./Footer";
 
 interface LandingPageProps {
   userId?: string | null;
-}
+}[[]]
 
 const LandingPage = ({ userId }: LandingPageProps) => {
   return (
@@ -103,7 +103,7 @@ const LandingPage = ({ userId }: LandingPageProps) => {
             {/* Feature 1 */}
             <div
               className="p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/40
- hover:shadow-md hover:shadow-gray-300/50 transition-all duration-300"
+ hover:shadow-md hover:shadow-gray-300/50 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="w-14 h-14 bg-green-500 rounded-xl flex items-center justify-center mb-4">
                 <Zap className="w-7 h-7 text-white" />
@@ -120,7 +120,7 @@ const LandingPage = ({ userId }: LandingPageProps) => {
             {/* Feature 2 */}
             <div
               className="p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/40
- hover:shadow-md hover:shadow-gray-300/50 transition-all duration-300"
+ hover:shadow-md hover:shadow-gray-300/50 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="w-14 h-14 bg-indigo-600 rounded-xl flex items-center justify-center mb-4">
                 <Shield className="w-7 h-7 text-white" />
@@ -137,7 +137,7 @@ const LandingPage = ({ userId }: LandingPageProps) => {
             {/* Feature 3 */}
             <div
               className="p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/40
- hover:shadow-md hover:shadow-gray-300/50  transition-all duration-300"
+ hover:shadow-md hover:shadow-gray-300/50 hover:-translate-y-1  transition-all duration-300"
             >
               <div className="w-14 h-14 bg-teal-500 rounded-xl flex items-center justify-center mb-4">
                 <Users className="w-7 h-7 text-white" />
@@ -154,7 +154,7 @@ const LandingPage = ({ userId }: LandingPageProps) => {
             {/* Feature 4 */}
             <div
               className="p-6 sm:p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/40
- hover:shadow-md hover:shadow-gray-300/50 transition-all duration-300"
+ hover:shadow-md hover:shadow-gray-300/50 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="w-14 h-14 bg-green-500 rounded-xl flex items-center justify-center mb-4">
                 <Edit className="w-7 h-7 text-white" />
@@ -171,7 +171,7 @@ const LandingPage = ({ userId }: LandingPageProps) => {
             {/* Feature 5 */}
             <div
               className="p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/40
- hover:shadow-md hover:shadow-gray-300/50 transition-all duration-300"
+ hover:shadow-md hover:shadow-gray-300/50 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="w-14 h-14 bg-indigo-600 rounded-xl flex items-center justify-center mb-4">
                 <BarChart3 className="w-7 h-7 text-white" />
@@ -188,7 +188,7 @@ const LandingPage = ({ userId }: LandingPageProps) => {
             {/* Feature 6 */}
             <div
               className="p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/40
- hover:shadow-md hover:shadow-gray-300/50 transition-all duration-300"
+ hover:shadow-md hover:shadow-gray-300/50 hover:-translate-y-1 transition-all duration-300"
             >
               <div className="w-14 h-14 bg-teal-500 rounded-xl flex items-center justify-center mb-4">
                 <Clock className="w-7 h-7 text-white" />
@@ -215,9 +215,16 @@ const LandingPage = ({ userId }: LandingPageProps) => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 text-center">
               {/* Step 1 */}
-              <div className="flex flex-col items-center px-4">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-50 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-4">
-                  <FileText className="w-8 h-8 sm:w-10 sm:h-10 text-green-500 dark:text-green-400" />
+              <div className="flex flex-col items-center px-4 group">
+              <div className="relative mb-6">
+              <div className="absolute inset-0 bg-green-400 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+              <div className="absolute inset-2 bg-green-500/30 border border-green-600 rounded-full blur-xl opacity-50  transition duration-300 group-hover:opacity-80" />
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center shadow-sm border border-green-500/70 dark:border-green-900/30 transition-transform duration-300 group-hover:scale-110 ">
+                    <FileText 
+                      className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 text-green-600 dark:text-green-400" 
+                      strokeWidth={2}
+                    />
+                  </div>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
                   1. Describe
@@ -228,9 +235,16 @@ const LandingPage = ({ userId }: LandingPageProps) => {
                 </p>
               </div>
               {/* Step 2 */}
-              <div className="flex flex-col items-center px-4">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-50 dark:bg-emerald-900/20 rounded-full flex items-center justify-center mb-4">
-                  <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 text-emerald-500 dark:text-emerald-400" />
+              <div className="flex flex-col items-center px-4 group">
+                <div className="relative mb-6">
+                <div className="absolute inset-0 bg-green-400 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+                <div className="absolute inset-2 bg-green-500/30 border border-green-600 rounded-full blur-xl opacity-50  transition duration-300 group-hover:opacity-80" />
+                <div className="relative w-16 h-16 sm:w-20 sm:h-20 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center shadow-sm border border-green-500/70 dark:border-green-900/30 transition-transform duration-300 group-hover:scale-110 ">
+                      <Sparkles 
+                      className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 text-green-600 dark:text-green-400" 
+                      strokeWidth={2}
+                    />
+                  </div>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
                   2. Generate
@@ -241,9 +255,16 @@ const LandingPage = ({ userId }: LandingPageProps) => {
                 </p>
               </div>
               {/* Step 3 */}
-              <div className="flex flex-col items-center px-4">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-teal-50 dark:bg-teal-900/20 rounded-full flex items-center justify-center mb-4">
-                  <Share2 className="w-8 h-8 sm:w-10 sm:h-10 text-teal-500 dark:text-teal-400" />
+              <div className="flex flex-col items-center px-4 group">
+                <div className="relative mb-6">
+                <div className="absolute inset-0 bg-green-400 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+                <div className="absolute inset-2 bg-green-500/30 border border-green-600 rounded-full blur-xl opacity-50  transition duration-300 group-hover:opacity-80" />
+                <div className="relative w-16 h-16 sm:w-20 sm:h-20 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center shadow-sm border border-green-500/70 dark:border-green-900/30 transition-transform duration-300 group-hover:scale-110 ">
+                      <Share2 
+                      className="relative z-10 w-8 h-8 sm:w-10 sm:h-10 text-green-600 dark:text-green-400" 
+                      strokeWidth={2}
+                    />
+                  </div>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
                   3. Share
@@ -257,7 +278,7 @@ const LandingPage = ({ userId }: LandingPageProps) => {
           </div>
 
           {/* Stats Section */}
-          <div className="bg-green-500 rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 mb-12 sm:mb-16 md:mb-20">
+          <div className="relative group bg-green-500 animate-breathe rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 mb-12 sm:mb-16 md:mb-20 shadow-2xl shadow-green-500/20 transition-all shadow-xl duration-500 hover:scale-[1.02] border border-white/10 hover:border-white ">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center text-white">
               <div>
                 <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-1 sm:mb-2">
@@ -306,7 +327,7 @@ const LandingPage = ({ userId }: LandingPageProps) => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-              <div className="p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/20">
+              <div className="p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200  hover:shadow-md hover:shadow-gray-300/50 hover:-translate-y-1 transition-all duration-300 dark:border-gray-700/20">
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star
@@ -335,7 +356,7 @@ const LandingPage = ({ userId }: LandingPageProps) => {
                 </div>
               </div>
 
-              <div className="p-6 sm:p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/20">
+              <div className="p-6 sm:p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200 hover:shadow-md hover:shadow-gray-300/50 hover:-translate-y-1 transition-all duration-300 dark:border-gray-700/20">
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star
@@ -363,7 +384,7 @@ const LandingPage = ({ userId }: LandingPageProps) => {
                 </div>
               </div>
 
-              <div className="p-6 sm:p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700/20">
+              <div className="p-6 sm:p-8 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-2xl border border-gray-200 hover:shadow-md hover:shadow-gray-300/50 hover:-translate-y-1 transition-all duration-300 dark:border-gray-700/20">
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star
