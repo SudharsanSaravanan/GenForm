@@ -78,6 +78,20 @@ jobs:
               comment += `---\n\n`;
             }
             
+            // Check for existing bot comments
+            const { data: comments } = await github.rest.issues.listComments({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+            
+            const botComment = comments.find(comment => 
+              comment.user.type === 'Bot' && 
+              (comment.body.includes('PR Checklist Review') || 
+               comment.body.includes('PR Checklist Complete') ||
+               comment.body.includes('Welcome to GenForm'))
+            );
+            
             if (issues.length > 0 || warnings.length > 0) {
               comment += `## 📋 PR Checklist Review\n\n`;
               comment += `Thank you for your contribution! Please address the following items:\n\n`;
@@ -103,13 +117,22 @@ jobs:
               comment += `Once done, this check will automatically pass! ✅\n\n`;
               comment += `Need help? Check out our [Contributing Guidelines](../CONTRIBUTING.md) or ask in the comments!`;
               
-              // Post comment
-              await github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: comment
-              });
+              // Update existing comment or create new one
+              if (botComment) {
+                await github.rest.issues.updateComment({
+                  comment_id: botComment.id,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: comment
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: comment
+                });
+              }
               
               // Set status check
               if (issues.length > 0) {
@@ -130,12 +153,22 @@ jobs:
                 successComment += `A maintainer will review it soon. Thank you for your contribution! 🙏\n`;
               }
               
-              await github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: successComment
-              });
+              // Update existing comment or create new one
+              if (botComment) {
+                await github.rest.issues.updateComment({
+                  comment_id: botComment.id,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: successComment
+                });
+              } else {
+                await github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: successComment
+                });
+              }
             }
 
       - name: Label first-time contributors

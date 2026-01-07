@@ -25,6 +25,9 @@ jobs:
         run: npm run build
         env:
           SKIP_ENV_VALIDATION: true
+          STRIPE_SECRET_KEY: sk_test_dummy_key_for_ci_build
+          NEXT_PUBLIC_BASE_URL: http://localhost:3000
+          DATABASE_URL: postgresql://dummy:dummy@localhost:5432/dummy
 
       - name: Run Lighthouse CI
         uses: treosh/lighthouse-ci-action@v11

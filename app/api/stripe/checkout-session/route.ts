@@ -2,11 +2,18 @@ import Stripe from "stripe";
 
 import { NextResponse } from "next/server";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+// Conditionally initialize Stripe only if API key is available
+const stripe = process.env.STRIPE_SECRET_KEY 
+  ? new Stripe(process.env.STRIPE_SECRET_KEY)
+  : null;
 
 export async function POST(req: Request) {
     const { price, userId, plan } = await req.json();
  
+    // Check if Stripe is configured
+    if (!stripe) {
+        return NextResponse.json({ error: "Payment service not configured" }, { status: 503 })
+    }
 
     if (!userId) {
         return NextResponse.json({ error: "User not found" }, { status: 400 })
