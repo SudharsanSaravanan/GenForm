@@ -119,7 +119,7 @@ const layout = async ({ children }: { children: React.ReactNode }) => {
                         <Button variant={"ghost"} className="w-full justify-start">Sign In</Button>
                       </Link>
                       <Link href="/sign-up">
-                        <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white">
+                        <Button className="w-full bg-green-500 hover:bg-green-600 text-white">
                           Get Started
                         </Button>
                       </Link>
