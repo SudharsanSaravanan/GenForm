@@ -55,7 +55,9 @@ const DashboardSidebar = () => {
 
       {/* Mobile Slide-in Drawer */}
       {sidebarOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-black bg-opacity-30 flex">
+        <div className="md:hidden fixed inset-0 z-[100] bg-black bg-opacity-30 flex">
+           {/* Click outside to close */}
+          <div className="flex-1" onClick={() => setSidebarOpen(false)} />
           <div className="bg-white w-80 h-full shadow-lg relative overflow-y-auto transition-transform duration-300 ease-in-out transform translate-x-0">
             <div className="p-6">
               <button
@@ -80,8 +82,6 @@ const DashboardSidebar = () => {
               </nav>
             </div>
           </div>
-          {/* Click outside to close */}
-          <div className="flex-1" onClick={() => setSidebarOpen(false)} />
         </div>
       )}
 
